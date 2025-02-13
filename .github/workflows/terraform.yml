@@ -14,12 +14,12 @@ on:
 
 env:
 #credentials for deployment to AWS
-AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+ AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+ AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
 #s3 bucket terraform state
-BUCKET_TF_STATE: ${{ secrets.BUCKET_TF_STATE }}
-AWS_REGION: us-east-1
-EKS_CLUSTER: gitops-eks 
+ BUCKET_TF_STATE: ${{secrets.BUCKET_TF_STATE}}
+ AWS_REGION: us-east-1
+ EKS_CLUSTER: gitops-eks 
 
 jobs:
   terraform:
@@ -56,5 +56,5 @@ jobs:
         continue-on-error: true 
 
       - name: Terraform plan status 
-        if: steps.plan.outcome == "failure"
+        if: steps.plan.outcome == 'failure'
         run: exit 1
